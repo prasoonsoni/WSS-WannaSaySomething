@@ -8,7 +8,8 @@ const BASE_URL = process.env.REACT_APP_BASE_URL
 const UserPage = () => {
     const { username } = useParams()
     const [name, setName] = useState("")
-    const [userFound, setUserFound] = useState()
+    const [userFound, setUserFound] = useState(false)
+    const [userNotFound, setUserNotFound] = useState(false)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -17,14 +18,17 @@ const UserPage = () => {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
                 }
             });
             const json = await response.json()
             if (json.success) {
                 setUserFound(true)
+                setUserNotFound(false)
                 setName(json.data.name)
             } else {
                 setUserFound(false)
+                setUserNotFound(true)
             }
             setLoading(false)
         }
@@ -33,7 +37,7 @@ const UserPage = () => {
     return (
         <div className='container'>
             {loading && <Loading />}
-            {!userFound && <NotFound />}
+            {userNotFound && <NotFound />}
             {userFound && <SendMessage name={name} username={username} />}
         </div>
 
