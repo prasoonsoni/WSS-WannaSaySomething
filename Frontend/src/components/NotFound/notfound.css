@@ -1,0 +1,21 @@
+.notfound-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.notfound-heading{
+    color: white;
+    font-family: 'Anek Latin', sans-serif;
+    font-size: 4rem;
+    margin: 0;
+}
+
+@media only screen and (max-width: 520px) {
+    .notfound-heading{
+        font-size: 2rem;
+    }
+}

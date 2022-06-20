@@ -1,0 +1,12 @@
+.logo{
+    width: 350px;
+    height: 350px;
+    margin-top: 40px;
+    animation: bounce 2s infinite 0.3s ease-in-out;
+}
+
+@keyframes bounce {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, 0px); }   
+}

@@ -1,0 +1,85 @@
+.sendmessage-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sendmessage-card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: auto;
+    /* padding: 20px; */
+    background-color: white;
+    border-radius: 30px;
+}
+
+.user-name{
+    color: white;
+    font-family: 'Anek Latin', sans-serif;
+    font-size: 3rem;
+}
+.typed{
+    color: #F7EC09;
+}
+.user-username{
+    font-family: 'Anek Latin', sans-serif;
+    font-size: 1.5rem;
+}
+.user-message{
+    min-width: 450px;
+    max-width: 450px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: black;
+    font-family: 'Anek Latin', sans-serif;
+    font-size: 1.5rem;
+    margin: 20px;
+    margin-top: 0;
+}
+
+.bottom-button-container{
+    position: absolute;
+    bottom: 0;
+}
+
+.made-footer{
+    font-family: 'Anek Latin', sans-serif;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.portfolio-link{
+    cursor: pointer;
+    color: white;
+}
+
+.portfolio-link:hover{
+    color:#F7EC09;
+}
+@media only screen and (max-width: 600px) {
+    .sendmessage-card{
+        width: 350px;
+    }
+    .user-message{
+        min-width:300px;
+        max-width: 300px;
+    }
+    .user-name{
+        font-size: 2rem;
+    }
+    .user-username{
+        font-size: 1.1rem;
+    }
+    .user-message{
+        font-size: 1.2rem;
+    }
+}

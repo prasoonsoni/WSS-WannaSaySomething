@@ -1,0 +1,25 @@
+.button{
+    width: 500px;
+    outline: none;
+    border: none;
+    font-family: 'Anek Latin', sans-serif;
+    font-size: 1.5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 30px;
+    margin-top: 20px;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.button:hover{
+    background-color: #F7EC09;
+}
+
+@media only screen and (max-width: 600px) {
+    .button{
+        width: 350px;
+    }
+   
+}

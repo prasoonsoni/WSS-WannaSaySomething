@@ -1,0 +1,38 @@
+/* Home Page CSS */
+.home-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.home-heading{
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    width: auto;
+    font-family: 'Anek Latin', sans-serif;
+}
+
+.fullform{
+    font-family: 'Dancing Script', cursive;
+}
+
+.home-typed{
+    display: flex;
+    margin: 0;
+    font-size: 2rem;
+    color:white;
+    font-family: 'Anek Latin', sans-serif;
+}
+
+@media only screen and (max-width:650px){
+    .home-heading{
+        font-size: 2rem;
+    }
+    .home-typed{
+        font-size: 1.2rem;
+    }
+}
