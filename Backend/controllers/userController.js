@@ -52,4 +52,17 @@ const register = async (req, res) => {
     }
 }
 
-module.exports = { login, register }
+const getUser = async (req, res) => {
+    try {
+        const username = req.params.username
+        const user = await User.findOne({ username })
+        if (!user) {
+            return res.json({ success: false, message: "User doesn't exists!!" });
+        }
+        res.json({ success: true, message: "User Found." })
+    } catch (error) {
+        console.log(error.message)
+        res.json({ status: "error", message: "Some internal server error occured." })
+    }
+}
+module.exports = { login, register, getUser }

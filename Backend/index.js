@@ -18,5 +18,5 @@ app.use('/user', require('./routes/userRoutes'))
 app.use('/message', require('./routes/messageRoutes'))
 
 app.listen(port, () => {
-    console.log(`Postsy listening on http://localhost:${port}`)
+    console.log(`WSS - Wanna Say Something listening on http://localhost:${port}`)
 })
