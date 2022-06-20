@@ -19,7 +19,7 @@ const sendMessage = async (req, res) => {
         res.json({ success: true, message: "Message sent successfully." })
     } catch (error) {
         console.log(error.message)
-        res.json({ status: "error", message: "Some internal server error occured." })
+        res.json({ status: false, message: "Some internal server error occured." })
     }
 }
 
@@ -35,7 +35,7 @@ const getMessages = async (req, res) => {
         res.json({ success: false, messages: messages })
     } catch (error) {
         console.log(error.message)
-        res.json({ status: "error", message: "Some internal server error occured." })
+        res.json({ status: false, message: "Some internal server error occured." })
     }
 }
 module.exports = { sendMessage, getMessages }
