@@ -28,11 +28,24 @@
     font-family: 'Anek Latin', sans-serif;
 }
 
+.home-footer{
+    position: absolute;
+    bottom: 0;
+}
+
+.launching-soon{
+    color: white;
+    font-size: 3rem;
+    font-family: 'Anek Latin', sans-serif;
+}
 @media only screen and (max-width:650px){
     .home-heading{
         font-size: 2rem;
     }
     .home-typed{
         font-size: 1.2rem;
+    }
+    .launching-soon{
+        font-size:1.5rem;
     }
 }
