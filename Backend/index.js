@@ -1,12 +1,10 @@
 const express = require('express')
-const dotenv = require('dotenv')
 const app = express()
 const cors = require('cors')
 const connectToDatabase = require('./database/connection')
-const port = 5000 || process.env.PORT
+const port = 3000 
 
 connectToDatabase()
-dotenv.config()
 app.use(cors())
 app.use(express.json())
 
