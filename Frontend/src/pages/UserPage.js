@@ -16,7 +16,7 @@ const UserPage = () => {
         const getUser = async () => {
             const response = await fetch(`${BASE_URL}/user/${username}`, {
                 method: "GET",
-                mode: 'cors',
+                mode: 'no-cors',
                 headers: {
                     "Content-Type": "application/json",
                 }
