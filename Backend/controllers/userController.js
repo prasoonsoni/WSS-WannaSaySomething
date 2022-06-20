@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken')
 
 const login = async (req, res) => {
     try {
-        res.set('Access-Control-Allow-Origin', '*');
         const { username, password } = req.body
         const user = await User.findOne({ username })
         if (!user) {
@@ -31,7 +30,6 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
     try {
-        res.set('Access-Control-Allow-Origin', '*');
         const { name, username, password } = req.body
         const user = await User.findOne({ username });
         if (user) {
@@ -56,7 +54,6 @@ const register = async (req, res) => {
 
 const getUser = async (req, res) => {
     try {
-        res.set('Access-Control-Allow-Origin', '*');
         const username = req.params.username
         const user = await User.findOne({ username }).select('-password').select('-messages').select('-created_at')
         if (!user) {
