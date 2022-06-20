@@ -5,6 +5,7 @@ const { ObjectId } = require('mongodb')
 
 const sendMessage = async (req, res) => {
     try {
+        res.set('Access-Control-Allow-Origin', '*');
         const { message } = req.body
         const username = req.params.username
         const user = await User.findOne({ username })
@@ -25,6 +26,7 @@ const sendMessage = async (req, res) => {
 
 const getMessages = async (req, res) => {
     try {
+        res.set('Access-Control-Allow-Origin', '*');
         const id = new ObjectId(req.user.id)
         const username = req.user.username
         const user = await User.findOne({ _id: id, username: username })
