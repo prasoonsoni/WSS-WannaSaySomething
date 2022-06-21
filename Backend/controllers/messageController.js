@@ -32,7 +32,7 @@ const getMessages = async (req, res) => {
             return res.json({ success: false, message: "User doesn't exists!!" });
         }
         const messages = user.messages
-        res.json({ success: false, messages: messages })
+        res.json({ success: true, messages: messages })
     } catch (error) {
         console.log(error.message)
         res.json({ status: false, message: "Some internal server error occured." })
