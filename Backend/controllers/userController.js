@@ -2,6 +2,7 @@ require('dotenv').config()
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const { ObjectId } = require('mongodb')
 
 const login = async (req, res) => {
     try {
@@ -71,4 +72,19 @@ const getUser = async (req, res) => {
         res.json({ status: false, message: "Some internal server error occured." })
     }
 }
-module.exports = { login, register, getUser }
+
+const getUserByToken = async (req, res) => {
+    try {
+        const id = new ObjectId(req.user.id)
+        const username = req.user.username
+        const user = await User.findOne({ _id: id, username: username }).select('-password').select('-messages').select('-created_at')
+        if (!user) {
+            return res.json({ success: false, message: "User doesn't exists!!" });
+        }
+        res.json({ success: true, data: user })
+    } catch (error) {
+        console.log(error.message)
+        res.json({ status: false, message: "Some internal server error occured." })
+    }
+}
+module.exports = { login, register, getUser, getUserByToken }
