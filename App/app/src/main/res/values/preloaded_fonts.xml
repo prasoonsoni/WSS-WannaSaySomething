@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/montserrat_alternates</item>
+        <item>@font/montserrat_alternates_black</item>
+        <item>@font/montserrat_alternates_bold</item>
+        <item>@font/montserrat_alternates_extrabold</item>
+        <item>@font/montserrat_alternates_extralight</item>
+        <item>@font/montserrat_alternates_light</item>
+        <item>@font/montserrat_alternates_medium</item>
+        <item>@font/montserrat_alternates_semibold</item>
+        <item>@font/montserrat_alternates_thin</item>
+        <item>@font/montserrat_thin</item>
+    </array>
+</resources>
