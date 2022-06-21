@@ -34,6 +34,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +71,6 @@ public class MessagesActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("token", MODE_PRIVATE);
         String token = sharedPreferences.getString("token", "");
         getData(token);
-
         messageAdapter = new MessageAdapter(messages, this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -113,7 +114,7 @@ public class MessagesActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MessagesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MessagesActivity.this, "Internet connection error. Please try again.", Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
                 loadingDialog.dismiss();
             }

@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }, error -> {
-            Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Internet connection error. Please try again.", Toast.LENGTH_SHORT).show();
         });
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(request);

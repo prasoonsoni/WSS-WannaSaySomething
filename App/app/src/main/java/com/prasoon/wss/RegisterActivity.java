@@ -83,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }, error -> {
-            Toast.makeText(RegisterActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Internet connection error. Please try again.", Toast.LENGTH_SHORT).show();
         });
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(request);

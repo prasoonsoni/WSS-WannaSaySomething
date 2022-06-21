@@ -1,18 +1,13 @@
 package com.prasoon.wss.adapters;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
-
-import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -22,18 +17,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.prasoon.wss.R;
 import com.prasoon.wss.models.Message;
-
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHolder> {
@@ -56,10 +45,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Message message = messages.get(position);
         holder.message.setText(message.getMessage());
-        holder.datetime.setText(message.getCreatedAt());
+        holder.datetime.setText(message.getCreatedAt().substring(0,10));
+
         View view = LayoutInflater.from(context).inflate(R.layout.save_message, null);
-        CardView messageCardView = view.findViewById(R.id.saveMessageCardView);
-        TextView saveMessageTextView = view.findViewById(R.id.user_message);
+        TextView saveMessageTextView = view.findViewById(R.id.share_message);
         saveMessageTextView.setText(message.getMessage());
 
         holder.replyMessage.setOnClickListener(v->{
@@ -71,15 +60,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
             Intent feedIntent = new Intent(Intent.ACTION_SEND);
             feedIntent.setType("image/*");
             feedIntent.putExtra(Intent.EXTRA_STREAM, uri);
-            Intent storiesIntent = new Intent("com.instagram.share.ADD_TO_STORY");
-            storiesIntent.setDataAndType(uri, "image/*");
-            storiesIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            storiesIntent.setPackage("com.instagram.android");
-            feedIntent.setPackage("com.instagram.android");
-            context.grantUriPermission(
-                    "com.instagram.android", uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            feedIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{storiesIntent});
-            context.startActivity(feedIntent);
+            context.startActivity(Intent.createChooser(feedIntent, "Sharing Message"));
+
         });
 
         holder.copyMessage.setOnClickListener(v->{

@@ -7,11 +7,15 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +35,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,12 +68,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         share.setOnClickListener(v->{
-//            Intent sendIntent = new Intent();
-//            sendIntent.setAction(Intent.ACTION_SEND);
-//            sendIntent.putExtra(Intent.EXTRA_TEXT,
-//                    "Hey check out my app at: https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID);
-//            sendIntent.setType("image/jpeg");
-//            startActivity(sendIntent);
+            View view = LayoutInflater.from(this).inflate(R.layout.share_profile, null);
+            TextView link = view.findViewById(R.id.link);
+            link.setText(url.getText().toString());
+            Bitmap image = getBitmapFromView(view);
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            String path = MediaStore.Images.Media.insertImage(getContentResolver(), image, "Profile", null);
+            Uri uri = Uri.parse(path);
+            Intent feedIntent = new Intent(Intent.ACTION_SEND);
+            feedIntent.setType("image/*");
+            feedIntent.putExtra(Intent.EXTRA_STREAM, uri);
+            feedIntent.putExtra(Intent.EXTRA_TEXT, "You can share anonymous messages to me at " + url.getText().toString() + "\n\nVisit "+getString(R.string.PROFILE_BASE_URL)+" to get anonymous messages!!");
+            startActivity(Intent.createChooser(feedIntent, "Sharing Profile"));
         });
 
         logout.setOnClickListener(v->{
@@ -122,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Internet connection error. Please try again.", Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
                 loadingDialog.hide();
             }
@@ -137,6 +149,19 @@ public class MainActivity extends AppCompatActivity {
         };
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(request);
+    }
+
+    public Bitmap getBitmapFromView(View v){
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        v.measure(View.MeasureSpec.makeMeasureSpec(dm.widthPixels, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(dm.heightPixels, View.MeasureSpec.EXACTLY));
+        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+        Bitmap returnedBitmap = Bitmap.createBitmap(v.getMeasuredWidth(),
+                v.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(returnedBitmap);
+        v.draw(c);
+
+        return returnedBitmap;
     }
 
 }
