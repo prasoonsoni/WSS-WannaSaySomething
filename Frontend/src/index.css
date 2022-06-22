@@ -5,7 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to right, #6a11cb , #2575fc);
+  /* background-image: linear-gradient(to right, #6a11cb , #2575fc); */
+  background-color: black;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 code {

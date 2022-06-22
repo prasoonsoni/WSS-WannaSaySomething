@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    /* justify-content: center; */
     align-items: center;
 }
 
@@ -38,6 +37,33 @@
     font-size: 3rem;
     font-family: 'Anek Latin', sans-serif;
 }
+.download-button{
+    color: black;
+    background-color: #F7EC09;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'Anek Latin', sans-serif;
+    border-radius: 15px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.download-button:hover{
+    background-color: white;
+}
+
+.navigate-down{
+    color: white;
+    font-size: 2.5rem;
+    margin-top: 40px;
+    animation: bounce 5s infinite 0.3s ease-in-out;
+    cursor: pointer;
+}
 @media only screen and (max-width:650px){
     .home-heading{
         font-size: 2rem;
@@ -47,6 +73,9 @@
     }
     .launching-soon{
         font-size:1.5rem;
+    }
+    .download-button{
+        font-size: 1.2rem;
     }
 }
 

@@ -42,11 +42,11 @@
                 android:id="@+id/replyMessage"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/copyMessage"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/messageText"
                 app:srcCompat="@drawable/ic_reply" />
 
@@ -73,9 +73,22 @@
                 android:fontFamily="@font/montserrat_alternates_light"
                 android:text="Time and Date"
                 android:textSize="12sp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/messageText" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/montserrat_alternates_extralight"
+                android:text="Reply"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/replyMessage"
+                app:layout_constraintStart_toEndOf="@+id/replyMessage"
+                app:layout_constraintTop_toTopOf="@+id/replyMessage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

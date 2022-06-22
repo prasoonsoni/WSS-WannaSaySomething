@@ -1,0 +1,43 @@
+.app-page-container{
+    background-color: black;
+    height: 100vh;
+    /* display: flex; */
+    /* flex-direction: column; */
+    text-align: center;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.mockup{
+    height: 60vh;
+}
+
+.steps{
+    width: 100%;
+}
+
+.steps-heading{
+    margin-top: 20px;
+    color: white;
+    font-family: 'Anek Latin', sans-serif;
+    font-size: 2rem;
+}
+.steps-points{
+    color: #aaaaaa;
+    font-weight: 300;
+    font-family: 'Anek Latin', sans-serif;
+    font-size: 1.5rem;
+}
+.app-typed{
+    display: flex;
+    margin: 0;
+    font-size: 2rem;
+    color:white;
+    font-family: 'Anek Latin', sans-serif;
+}
+
+@media only screen and (max-width:560px){
+    .mockup{
+        height: 50vh;
+    }
+}

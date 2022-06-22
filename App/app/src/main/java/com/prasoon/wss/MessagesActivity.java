@@ -76,6 +76,7 @@ public class MessagesActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         messagesRecyclerView.setLayoutManager(layoutManager);
         messagesRecyclerView.setAdapter(messageAdapter);
+        Log.i("messages111",messages.toString());
     }
 
     public void getData(String token){
