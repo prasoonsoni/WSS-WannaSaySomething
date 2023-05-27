@@ -65,7 +65,7 @@ const SendMessage = (props) => {
             {message.length > 0 && <Button text='Send' onClick={sendMessage} />}
             <div className='bottom-button-container'>
                 <Button text='Get your own messages! 🤩' onClick={() => navigate('/')} />
-                <p className='made-footer'>Made in 🇮🇳 with ❤️ by <a className='portfolio-link' href='https://prasoon.codes' target='_blank'>Prasoon.</a></p>
+                <p className='made-footer'>Made in 🇮🇳 with ❤️ by <a className='portfolio-link' href='https://prasoonsoni.com' target='_blank'>Prasoon.</a></p>
             </div>
         </div>
     )
